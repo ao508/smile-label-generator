@@ -17,10 +17,9 @@ public interface CmoLabelGeneratorService {
     String generateCmoSampleLabel(SampleMetadata sample, List<SampleMetadata> existingPatientSamples,
             List<SampleMetadata> samplesByAltId);
     Status generateSampleStatus(String requestId, IgoSampleManifest sampleManifest,
-            List<SampleMetadata> existingSamples, List<SampleMetadata> samplesByAltId)
+            List<SampleMetadata> samplesByAltId)
             throws JsonProcessingException;
-    Status generateSampleStatus(SampleMetadata sampleMetadata, List<SampleMetadata> existingSamples,
-            List<SampleMetadata> samplesByAltId) throws JsonProcessingException;
+    Status generateSampleStatus(SampleMetadata sampleMetadata) throws JsonProcessingException;
     Boolean igoSampleRequiresLabelUpdate(String newCmoLabel, String existingCmoLabel);
     String resolveSampleTypeAbbreviation(String specimenTypeValue, String sampleOriginValue,
             String cmoSampleClassValue, String sampleTypeDetailedValue);

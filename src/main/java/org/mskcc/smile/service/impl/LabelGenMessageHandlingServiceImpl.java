@@ -242,7 +242,7 @@ public class LabelGenMessageHandlingServiceImpl implements MessageHandlingServic
                                         requestId, sampleManifest, existingSamples, samplesByAltId);
                                 if (newSampleCmoLabel == null) {
                                     sampleStatus = cmoLabelGeneratorService.generateSampleStatus(
-                                            requestId, sampleManifest, existingSamples, samplesByAltId);
+                                            requestId, sampleManifest, samplesByAltId);
                                     LOG.error("Unable to generate new CMO sample label for sample: "
                                             + sampleManifest.getIgoId());
                                     // check if we can fall back on an existing cmo label that might have
@@ -403,7 +403,7 @@ public class LabelGenMessageHandlingServiceImpl implements MessageHandlingServic
                             // Case when sample update json doesn't have status
                             if (sample.getStatus() == null) {
                                 Status newSampleStatus = cmoLabelGeneratorService
-                                        .generateSampleStatus(sample, existingSamples, samplesByAltId);
+                                        .generateSampleStatus(sample);
                                 sample.setStatus(newSampleStatus);
                             }
                             if (sample.getStatus().getValidationStatus()) {
@@ -413,7 +413,7 @@ public class LabelGenMessageHandlingServiceImpl implements MessageHandlingServic
                                                 existingSamples, samplesByAltId);
                                 if (newCmoSampleLabel == null) {
                                     Status newSampleStatus = cmoLabelGeneratorService
-                                            .generateSampleStatus(sample, existingSamples, samplesByAltId);
+                                            .generateSampleStatus(sample);
                                     sample.setStatus(newSampleStatus);
                                 }
 

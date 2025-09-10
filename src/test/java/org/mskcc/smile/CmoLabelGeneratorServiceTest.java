@@ -86,7 +86,7 @@ public class CmoLabelGeneratorServiceTest {
         Assertions.assertEquals("C-MP789JR-T001-d01", newCmoLabel);
 
         Status sampleStatus = cmoLabelGeneratorService.generateSampleStatus(
-                updatedSample, existingSamples, DEFAULT_SAMPLES_BY_ALT_ID);
+                updatedSample);
         Assertions.assertEquals(Boolean.TRUE, sampleStatus.getValidationStatus());
         Assertions.assertEquals(sampleStatus.getValidationReport(), (new HashMap()).toString());
     }
@@ -120,7 +120,7 @@ public class CmoLabelGeneratorServiceTest {
         Assertions.assertEquals("C-newPatient-X002-d01", newCmoLabel);
 
         Status sampleStatus = cmoLabelGeneratorService.generateSampleStatus(
-                updatedSample, existingSamples, DEFAULT_SAMPLES_BY_ALT_ID);
+                updatedSample);
         Assertions.assertEquals(Boolean.TRUE, sampleStatus.getValidationStatus());
         Assertions.assertEquals(sampleStatus.getValidationReport(), (new HashMap()).toString());
     }
@@ -156,7 +156,7 @@ public class CmoLabelGeneratorServiceTest {
         Assertions.assertEquals("C-newPatient-X001-d01", newCmoLabel);
 
         Status sampleStatus = cmoLabelGeneratorService.generateSampleStatus(
-                updatedSample, existingSamples, DEFAULT_SAMPLES_BY_ALT_ID);
+                updatedSample);
         Assertions.assertEquals(Boolean.TRUE, sampleStatus.getValidationStatus());
         Assertions.assertEquals(sampleStatus.getValidationReport(), (new HashMap()).toString());
     }
@@ -190,7 +190,7 @@ public class CmoLabelGeneratorServiceTest {
         Assertions.assertEquals("C-MP789JR-F001-d01", newCmoLabel);
 
         Status sampleStatus = cmoLabelGeneratorService.generateSampleStatus(
-                updatedSample, existingSamples, DEFAULT_SAMPLES_BY_ALT_ID);
+                updatedSample);
         Assertions.assertEquals(Boolean.FALSE, sampleStatus.getValidationStatus());
         Assertions.assertNotSame(sampleStatus.getValidationReport(), (new HashMap()).toString());
     }

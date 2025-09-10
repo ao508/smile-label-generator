@@ -404,7 +404,7 @@ public class CmoLabelGeneratorServiceImpl implements CmoLabelGeneratorService {
 
     @Override
     public Status generateSampleStatus(String requestId, IgoSampleManifest sampleManifest,
-            List<SampleMetadata> existingSamples, List<SampleMetadata> samplesByAltId)
+            List<SampleMetadata> samplesByAltId)
             throws JsonProcessingException {
         Status sampleStatus = new Status();
         Map<String, String> validationReport = new HashMap<>();
@@ -429,8 +429,7 @@ public class CmoLabelGeneratorServiceImpl implements CmoLabelGeneratorService {
     }
 
     @Override
-    public Status generateSampleStatus(SampleMetadata sampleMetadata,
-            List<SampleMetadata> existingSamples, List<SampleMetadata> samplesByAltId)
+    public Status generateSampleStatus(SampleMetadata sampleMetadata)
             throws JsonProcessingException {
         Status sampleStatus = new Status();
         Map<String, String> validationReport = new HashMap<>();
