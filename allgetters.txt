@@ -1,0 +1,80 @@
+    private static final Log LOG = LogFactory.getLog(CmoLabelGeneratorServiceImpl.class);
+                    = Arrays.asList(sampleTypeAbbrevsByAltId.toArray(String[]::new)).get(0);
+            if (sample.getPrimaryId().equals(primaryId)) {
+                        = Arrays.asList(normalizedSampleTypeAbbreviations.toArray(String[]::new)).get(0);
+            return generateCmoCelllineSampleLabel(requestId, sampleManifest.getInvestigatorSampleId());
+                sampleManifest.getIgoId(), sampleTypeAbbrev, samplesByAltId);
+        Integer sampleCounter =  resolveSampleIncrementValue(sampleManifest.getIgoId(),
+        Integer nextNucAcidCounter = resolveNextNucleicAcidIncrement(sampleManifest.getIgoId(),
+        String patientId = sampleManifest.getCmoPatientId();
+        if (isCmoCelllineSample(sampleMetadata.getSampleClass(), sampleMetadata.getCmoSampleIdFields())) {
+            return generateCmoCelllineSampleLabel(sampleMetadata.getIgoRequestId(),
+                    sampleMetadata.getInvestigatorSampleId());
+        String sampleTypeAbbrev = resolveSampleTypeAbbreviation(sampleMetadata.getSampleClass(),
+                sampleMetadata.getSampleOrigin(), sampleMetadata.getSampleType(),
+                sampleMetadata.getCmoSampleIdFields().get("sampleType"));
+                sampleMetadata.getPrimaryId(), sampleTypeAbbrev, samplesByAltId);
+        Integer sampleCounter =  resolveSampleIncrementValue(sampleMetadata.getPrimaryId(),
+        String sampleTypeString = sampleMetadata.getCmoSampleIdFields().get("sampleType");
+        String recipe = sampleMetadata.getCmoSampleIdFields().get("recipe");
+        String naToExtract = sampleMetadata.getCmoSampleIdFields().get("naToExtract");
+        Integer nextNucAcidCounter = resolveNextNucleicAcidIncrement(sampleMetadata.getPrimaryId(),
+        String patientId = sampleMetadata.getCmoPatientId();
+        String sampleTypeAbbreviation = resolveSampleTypeAbbreviation(sampleMetadata.getSampleClass(),
+                sampleMetadata.getSampleOrigin(), sampleMetadata.getSampleType(),
+                sampleMetadata.getCmoSampleIdFields().get("sampleType"));
+        String sampleTypeString = sampleMetadata.getCmoSampleIdFields().get("sampleType");
+        String recipe = sampleMetadata.getCmoSampleIdFields().get("recipe");
+        String naToExtract = sampleMetadata.getCmoSampleIdFields().get("naToExtract");
+        String sampleTypeDetailedString = sampleManifest.getCmoSampleIdFields().get("sampleType");
+        String recipe = sampleManifest.getCmoSampleIdFields().get("recipe");
+        String naToExtract = sampleManifest.getCmoSampleIdFields().get("naToExtract");
+                return SPECIMEN_TYPE_ABBREV_MAP.get(specimenType);
+                    return SAMPLE_ORIGIN_ABBREV_MAP.get(sampleOrigin);
+                    return SAMPLE_ORIGIN_ABBREV_MAP.getOrDefault(sampleOrigin, SAMPLE_ORIGIN_ABBREV_DEFAULT);
+                sampleTypeAbbreviation = SAMPLE_CLASS_ABBREV_MAP.get(sampleClass);
+        String sampleTypeAbbrev = resolveSampleTypeAbbreviation(sampleManifest.getSpecimenType(),
+                sampleManifest.getSampleOrigin(), sampleManifest.getCmoSampleClass(),
+                sampleManifest.getCmoSampleIdFields().get("sampleType"));
+                sampleManifest.getIgoId(), sampleTypeAbbrev, samplesByAltId);
+                if (StringUtils.isBlank(sample.getCmoSampleName())) {
+                Matcher matcher = CMO_SAMPLE_ID_REGEX.matcher(sample.getCmoSampleName());
+                    String stAbbrev = parseSampleTypeAbbrevFromCmoLabel(sample.getCmoSampleName());
+                                + sample.getCmoSampleName());
+                return altIdSampleCounters.get(0);
+                if (sample.getPrimaryId().equalsIgnoreCase(primaryId)) {
+                    if (StringUtils.isBlank(sample.getCmoSampleName())) {
+                    Matcher matcher = CMO_SAMPLE_ID_REGEX.matcher(sample.getCmoSampleName());
+                        String stAbbrev = parseSampleTypeAbbrevFromCmoLabel(sample.getCmoSampleName());
+            if (StringUtils.isBlank(sample.getCmoSampleName())) {
+            if (CMO_CELLLINE_ID_REGEX.matcher(sample.getCmoSampleName()).find()) {
+            Matcher matcher = CMO_SAMPLE_ID_REGEX.matcher(sample.getCmoSampleName());
+                String currentSampleTypeAbbrev = parseSampleTypeAbbrevFromCmoLabel(sample.getCmoSampleName());
+        if (StringUtils.isBlank(sample.getCmoSampleName())) {
+        if (CMO_CELLLINE_ID_REGEX.matcher(sample.getCmoSampleName()).find()) {
+        return parseSampleTypeAbbrevFromCmoLabel(sample.getCmoSampleName());
+            if (StringUtils.isBlank(sample.getCmoSampleName())) {
+            if (CMO_CELLLINE_ID_REGEX.matcher(sample.getCmoSampleName()).find()) {
+            Matcher matcher = CMO_SAMPLE_ID_REGEX.matcher(sample.getCmoSampleName());
+            String currentSampleTypeAbbrev = parseSampleTypeAbbrevFromCmoLabel(sample.getCmoSampleName());
+            Integer currentIncrement = parseNucleicAcidCounterFromLabel(sample.getCmoSampleName());
+            if (s.getPrimaryId().equals(primaryId) && !StringUtils.isBlank(s.getCmoSampleName())) {
+                existingNucAcidCounter = parseNucleicAcidCounterFromLabel(s.getCmoSampleName());
+        if (samplesByAltId.size() == 1 && samplesByAltId.get(0).getPrimaryId().equals(primaryId)) {
+            Integer currentCounter = sortedCounters.get(i);
+            Integer prevCounter = sortedCounters.get(i - 1);
+        String normalizedPatientId = cmoSampleIdFields.get("normalizedPatientId");
+        return isCmoCelllineSample(sample.getSpecimenType(), sample.getCmoSampleIdFields());
+            Map<String, Object> statusMap = (Map<String, Object>) filteredJsonMap.get("status");
+            if (!statusMap.get("validationReport").toString().equals("{}")) {
+                            filteredJsonMap.get("igoId"), filteredJsonMap.get("primaryId")).toString();
+                Object[] sampleList = mapper.convertValue(filteredJsonMap.get("samples"),
+                    Map<String, Object> sampleStatusMap = mapper.convertValue(sampleMap.get("status"),
+                    if (!sampleStatusMap.get("validationReport").toString().equals("{}")) {
+                                sampleStatusMap.get("validationReport").toString(), Map.class);
+                                sampleMap.get("igoId"), sampleMap.get("primaryId")).toString();
+            return jsonMap.get("requestId").toString();
+            return jsonMap.get("igoRequestId").toString();
+                    jsonMap.get("additionalProperties"), Map.class);
+                return additionalProperties.get("requestId");
+                return additionalProperties.get("igoRequestId");
