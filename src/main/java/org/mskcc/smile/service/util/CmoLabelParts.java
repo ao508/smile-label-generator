@@ -1,4 +1,4 @@
-package org.mskcc.smile.service.model;
+package org.mskcc.smile.service.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -68,7 +68,7 @@ public class CmoLabelParts {
             this.detailedSampleType = cmoSampleIdFields.get("sampleType");
             this.naToExtract = cmoSampleIdFields.get("naToExtract");
             this.normalizedPatientId = cmoSampleIdFields.get("normalizedPatientId");
-            this.recipe = cmoSampleIdFields.get("recipe");
+            this.recipe = cmoSampleIdFields.get("recipe"); // same value as smile => genePanel
 
             switch (dataType) {
                 case DataType.IGO_SAMPLE_MANIFEST:
@@ -99,13 +99,6 @@ public class CmoLabelParts {
      * @param dataType the dataType to set
      */
     public void setDataType(DataType dataType) {
-        this.dataType = dataType;
-    }
-    
-    public void resolveDataType(Map<String, Object> sampleMap) {
-        // infer datatype from sample map keys
-        
-        
         this.dataType = dataType;
     }
 
